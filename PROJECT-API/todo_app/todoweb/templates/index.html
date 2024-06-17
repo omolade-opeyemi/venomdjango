@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="colorcontainer">
+    <div class="whitecontainer">
+        <div class="level1">
+            <form action="Create_Todo" method="post">
+                {% csrf_token %}
+                <input type="text" name="task" class="form-control" placeholder="New Task">
+                <button class="btn btn-primary" type="submit">ADD</button>
+            </form>
+
+              
+        </div>
+        <div class="level2">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+        </div>
+        <div class="level3">
+            {% for l in list %}
+            <div class="form-check" >
+                <input class="form-check-input" type="checkbox" checked = {{l.is_completed}} value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{l.todo}}
+                </label>
+              </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}
